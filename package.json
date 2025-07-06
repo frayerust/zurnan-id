@@ -1,0 +1,32 @@
+{
+  "name": "zurnan-id",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro start",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frayerust/zurnan-id.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frayerust/zurnan-id/issues"
+  },
+  "homepage": "https://github.com/frayerust/zurnan-id#readme",
+  "description": "",
+  "dependencies": {
+    "astro": "^5.11.0",
+    "chart.js": "^4.5.0"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^6.0.2",
+    "tailwindcss": "^3.4.17"
+  }
+}

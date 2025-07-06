@@ -1,0 +1,100 @@
+---
+// File: src/pages/index.astro
+// Mengimpor dan menggunakan Layout utama.
+import Layout from '../layouts/Layout.astro';
+---
+<Layout>
+    <!-- Beranda Section -->
+    <section id="beranda-content" class="content-section active">
+        <h2 class="text-3xl font-bold mb-6">Selamat Datang di Hub Digital Saya</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2 bg-white p-6 rounded-lg border border-stone-200">
+                <h3 class="font-bold text-xl mb-3 text-teal-800">Profil Singkat</h3>
+                <div class="flex flex-col sm:flex-row items-start gap-4">
+                   <img src="https://placehold.co/120x120/0d9488/ffffff?text=Z" alt="Foto Profil" class="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-4 border-teal-600 flex-shrink-0">
+                    <p class="text-stone-600 leading-relaxed">
+                        Saya adalah Dosen Teknik Informatika dan seorang peneliti dengan fokus pada bidang Machine Learning dan Natural Language Processing. Situs ini berfungsi sebagai pusat informasi untuk kegiatan akademik, jadwal mengajar, hasil riset, serta beberapa pemikiran dan opini saya terkait perkembangan teknologi terkini.
+                    </p>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg border border-stone-200">
+                <h3 class="font-bold text-xl mb-4 text-teal-800">Alokasi Waktu Akademik</h3>
+                <div class="relative mx-auto" style="height:200px; max-width:250px;">
+                    <canvas id="academicFocusChart"></canvas>
+                </div>
+            </div>
+        </div>
+         <div class="mt-6 bg-white p-6 rounded-lg border border-stone-200">
+            <h3 class="font-bold text-xl mb-4 text-teal-800">Akses Cepat</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                <a href="#jadwal" class="nav-trigger bg-teal-50 hover:bg-teal-100 p-4 rounded-lg border border-teal-200 transition">
+                    <p class="text-4xl">🗓️</p><p class="font-semibold text-teal-800 mt-2">Lihat Jadwal</p>
+                </a>
+                 <a href="#akademik" class="nav-trigger bg-teal-50 hover:bg-teal-100 p-4 rounded-lg border border-teal-200 transition">
+                    <p class="text-4xl">🎓</p><p class="font-semibold text-teal-800 mt-2">Jelajahi Riset</p>
+                </a>
+                 <a href="#opini" class="nav-trigger bg-teal-50 hover:bg-teal-100 p-4 rounded-lg border border-teal-200 transition">
+                    <p class="text-4xl">✍️</p><p class="font-semibold text-teal-800 mt-2">Baca Opini</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Akademik Section -->
+    <section id="akademik-content" class="content-section">
+        <h2 class="text-3xl font-bold mb-6">Akademik: Pengajaran & Riset</h2>
+         <div class="bg-white p-6 rounded-lg border border-stone-200">
+            <p class="mb-4 text-stone-600">Bagian ini merangkum semua aktivitas akademik, mulai dari mata kuliah yang diampu hingga area penelitian dan bimbingan mahasiswa.</p>
+            <div id="collapsible-container" class="space-y-2">
+                <!-- Konten akan ditambahkan oleh JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Konten untuk section lainnya (Jadwal, Opini, dll.) -->
+    <section id="jadwal-content" class="content-section">
+        <h2 class="text-3xl font-bold mb-6">Jadwal & Konsultasi</h2>
+        <div class="bg-white p-6 rounded-lg border border-stone-200">
+            <p class="text-stone-600 mb-4">Jadwal mengajar dan kegiatan saya akan ditampilkan di bawah ini melalui penyematan (embed) dari Google Calendar.</p>
+            <div class="w-full h-96 bg-stone-100 border border-dashed border-stone-300 rounded-lg flex items-center justify-center">
+                <p class="text-stone-500">📍 Google Calendar akan disematkan di sini</p>
+            </div>
+        </div>
+    </section>
+
+     <section id="opini-content" class="content-section">
+        <h2 class="text-3xl font-bold mb-6">Opini (Blog)</h2>
+         <div class="bg-white p-6 rounded-lg border border-stone-200">
+            <p class="text-stone-600 mb-4">Kumpulan tulisan dan pemikiran saya mengenai teknologi, pendidikan, dan riset. Konten ini akan dikelola melalui sistem admin terpisah.</p>
+            <div class="space-y-4">
+                <div class="border-b border-stone-200 pb-4">
+                    <h3 class="font-bold text-xl text-teal-800">Masa Depan AI Generatif di Dunia Pendidikan</h3>
+                    <p class="text-sm text-stone-500 my-1">1 Juli 2025</p>
+                    <a href="#" class="text-teal-600 hover:underline font-semibold">Baca Selengkapnya →</a>
+                </div>
+                <div class="border-b border-stone-200 pb-4">
+                    <h3 class="font-bold text-xl text-teal-800">Tantangan Data Bias dalam Machine Learning</h3>
+                    <p class="text-sm text-stone-500 my-1">15 Juni 2025</p>
+                    <a href="#" class="text-teal-600 hover:underline font-semibold">Baca Selengkapnya →</a>
+                </div>
+            </div>
+         </div>
+    </section>
+
+    <section id="misi-content" class="content-section">
+         <h2 class="text-3xl font-bold mb-6">Misi Mahasiswa</h2>
+         <div class="bg-white p-6 rounded-lg border border-stone-200">
+             <p class="text-stone-600">Halaman ini berisi tugas atau 'misi' opsional sebagai nilai tambah bagi mahasiswa. Misi dan deadline akan dikelola melalui panel admin.</p>
+         </div>
+    </section>
+
+    <section id="galeri-content" class="content-section">
+        <h2 class="text-3xl font-bold mb-6">Galeri Kegiatan</h2>
+        <div class="bg-white p-6 rounded-lg border border-stone-200">
+            <p class="text-stone-600 mb-4">Galeri ini akan menampilkan foto-foto dari kegiatan profesional (mengajar, seminar, PkM) yang disematkan dari Google Photos.</p>
+            <div class="w-full h-96 bg-stone-100 border border-dashed border-stone-300 rounded-lg flex items-center justify-center">
+                <p class="text-stone-500">🖼️ Album Google Photos akan disematkan di sini</p>
+            </div>
+        </div>
+    </section>
+</Layout>
