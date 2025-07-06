@@ -1,36 +1,91 @@
- body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+/*
+================================================
+ Gamified CSS Theme untuk Zurnan ID
+ Author: Gemini
+ Version: 1.0
+================================================
+*/
+
+/* --- Import Font dari Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+/* Font 'Silkscreen' memberikan nuansa retro/pixelated */
+
+/* --- Latar Belakang & Font Utama --- */
+body {
+    background-color: #1a1a1a; /* Latar belakang gelap seperti game UI */
+    color: #e0e0e0; /* Warna teks abu-abu terang agar nyaman dibaca */
+    font-family: 'Silkscreen', monospace; /* Menggunakan font game, dengan fallback ke monospace */
     margin: 0;
     padding: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sedikit bayangan pada teks agar lebih terbaca */
 }
 
+/* --- Tampilan Header & Navigasi --- */
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem 0;
+    background-color: #252525;
+    padding: 1.5rem 0;
     text-align: center;
+    border-bottom: 3px solid #00ffff; /* Garis bawah dengan warna neon cyan */
+    box-shadow: 0 4px 15px -5px #00ffff; /* Efek cahaya (glow) di bawah header */
+    animation: floatHeader 3s ease-in-out infinite; /* Animasi mengambang */
+}
+
+/* Keyframes untuk animasi header mengambang */
+@keyframes floatHeader {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
 }
 
 nav a {
-    color: #fff;
+    color: #e0e0e0;
     text-decoration: none;
-    margin: 0 15px;
-    padding-bottom: 5px;
+    margin: 0 20px;
+    padding: 10px 15px;
+    font-size: 1.2em;
+    border-radius: 8px;
+    transition: all 0.3s ease; /* Transisi halus untuk semua efek */
 }
 
+/* --- EFEK INTERAKTIF (Bagian Paling Penting!) --- */
+
+/* Efek saat mouse diarahkan ke link navigasi */
+nav a:hover {
+    background-color: #00ffff; /* Latar belakang menjadi neon cyan */
+    color: #1a1a1a; /* Teks menjadi gelap agar kontras */
+    text-shadow: none; /* Hilangkan bayangan teks agar bersih */
+    box-shadow: 0 0 20px #00ffff; /* Efek cahaya yang lebih kuat */
+}
+
+/* Gaya untuk link yang sedang aktif */
 nav a.active {
-    border-bottom: 2px solid #007BFF;
+    color: #ffffff;
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff; /* Efek glow permanen untuk halaman aktif */
+    border-bottom: 2px solid #00ffff;
 }
 
+/* --- Konten Utama (Seperti Panel UI Game) --- */
 main {
     max-width: 800px;
-    margin: 2rem auto;
-    padding: 0 20px;
-    background: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 3rem auto;
+    padding: 30px;
+    background: #2c2c2c; /* Warna panel yang sedikit lebih terang dari body */
+    border: 2px solid #444;
+    border-radius: 15px; /* Sudut yang lebih tumpul */
+    box-shadow: 
+        inset 0 0 10px rgba(0, 0, 0, 0.5), /* Bayangan ke dalam */
+        0 0 20px rgba(0, 0, 0, 0.5);      /* Bayangan ke luar */
+}
+
+h1 {
+    color: #00ffff; /* Judul utama dengan warna neon */
+    text-align: center;
+    font-size: 2.5em;
+    letter-spacing: 3px; /* Jarak antar huruf agar lebih bergaya */
+    text-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff;
+}
+
+p {
+    line-height: 1.8;
+    font-size: 1.1em;
 }
