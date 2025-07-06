@@ -1,111 +1,31 @@
-/*
-================================================
- Professional Tech CSS Theme untuk Portofolio
- Author: Gemini
- Version: 2.0
-================================================
-*/
-
-/* --- Import Font Profesional dari Google Fonts --- */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-/* Font 'Poppins' bersih, modern, dan sangat terbaca, cocok untuk profesional. */
-
-/* --- Latar Belakang & Tipografi Dasar --- */
-body {
-    background-color: #121212; /* Latar belakang dark grey yang sangat gelap dan profesional */
-    color: #cccccc; /* Warna teks abu-abu terang untuk kenyamanan membaca jangka panjang */
-    font-family: 'Poppins', sans-serif; /* Menggunakan font utama yang bersih */
-    font-weight: 400;
-    line-height: 1.7;
-    margin: 0;
-    padding: 0;
+body { 
+    font-family: 'Inter', sans-serif; 
+    background-color: #f5f5f4; 
 }
-
-/* --- Tampilan Header & Navigasi --- */
-header {
-    background-color: #1e1e1e;
-    padding: 1.5rem 0;
-    text-align: center;
-    border-bottom: 2px solid #333; /* Garis bawah yang solid dan subtil */
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(10px); /* Efek blur transparan (glassmorphism) */
+.nav-item { 
+    transition: background-color 0.2s, color 0.2s; 
 }
-
-nav a {
-    color: #cccccc;
-    text-decoration: none;
-    margin: 0 25px;
-    padding: 8px 0;
-    font-size: 1.1em;
-    font-weight: 600;
-    position: relative;
-    transition: color 0.3s ease;
+.nav-item.active { 
+    background-color: #0d9488; /* teal-600 */
+    color: white; 
 }
-
-/* --- EFEK INTERAKTIF PROFESIONAL --- */
-
-/* Efek garis bawah yang muncul saat mouse diarahkan ke link */
-nav a::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #00adb5; /* Warna aksen teal yang profesional */
-    transform-origin: bottom right;
-    transition: transform 0.3s ease-out;
+.nav-item:not(.active):hover { 
+    background-color: #f0fdfa; /* teal-50 */
 }
-
-nav a:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
+.content-section { 
+    display: none; 
 }
-
-nav a:hover {
-    color: #00adb5; /* Warna teks berubah menjadi warna aksen */
+.content-section.active { 
+    display: block; 
 }
-
-/* Gaya untuk link yang sedang aktif */
-nav a.active {
-    color: #00adb5;
-    border-bottom: 2px solid #00adb5;
+.collapsible-content { 
+    max-height: 0; 
+    overflow: hidden; 
+    transition: max-height 0.5s ease-in-out; 
 }
-
-/* --- Konten Utama --- */
-main {
-    max-width: 850px;
-    margin: 3rem auto;
-    padding: 40px;
-    background: #1e1e1e;
-    border: 1px solid #333;
-    border-radius: 8px;
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+.collapsible-trigger.open .arrow { 
+    transform: rotate(90deg); 
 }
-
-h1 {
-    color: #eeeeee; /* Warna putih yang lebih tegas untuk judul utama */
-    font-size: 2.8em;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 1rem;
-    letter-spacing: 1px;
-}
-
-h1::after {
-    content: '';
-    display: block;
-    width: 80px;
-    height: 3px;
-    background-color: #00adb5;
-    margin: 1rem auto 0;
-    border-radius: 2px;
-}
-
-p {
-    font-size: 1.1rem;
-    color: #b0b0b0; /* Warna paragraf yang sedikit lebih lembut */
+.arrow { 
+    transition: transform 0.3s; 
 }
