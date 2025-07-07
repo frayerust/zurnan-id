@@ -51,22 +51,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const ctx = document.getElementById('academicFocusChart');
     if (ctx) {
         new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Pengajaran', 'Riset', 'Bimbingan', 'Administrasi'],
-                datasets: [{
-                    label: 'Alokasi Waktu',
-                    data: [35, 25, 25, 15],
-                    backgroundColor: [
-                        '#0f766e', // teal-700
-                        '#14b8a6', // teal-500
-                        '#5eead4', // teal-300
-                        '#ccfbf1'  // teal-100
-                    ],
-                    borderColor: '#ffffff',
-                    borderWidth: 2,
-                    hoverOffset: 4
-                }]
+                type: 'doughnut',
+                data: {
+                    labels: ['Pengajaran', 'Riset', 'Bimbingan', 'PkM', 'Administrasi'],
+                    datasets: [{
+                        label: 'Alokasi Waktu',
+                        data: [30, 20, 20, 15, 15],
+                        backgroundColor: [
+                            '#0f766e', // teal-700
+                            '#0d9488', // teal-600
+                            '#14b8a6', // teal-500
+                            '#5eead4', // teal-300
+                            '#ccfbf1'  // teal-100
+                        ],
+                        borderColor: '#f5f5f4', // bg-stone-100
+                        borderWidth: 4
+                    }]
             },
             options: {
                 responsive: true,
