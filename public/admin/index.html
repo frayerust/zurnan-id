@@ -7,8 +7,12 @@
   <!-- Skrip tidak lagi di sini -->
 </head>
 <body>
-  <!-- PERUBAHAN KUNCI: Pindahkan skrip ke sini, di akhir body -->
-  <!-- Ini memastikan halaman sudah siap sebelum skrip berjalan -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <!-- 
+    PERUBAHAN KUNCI: Menambahkan '?v=1.1' di akhir URL skrip.
+    Ini akan memaksa semua browser dan server CDN untuk mengunduh
+    versi baru dari skrip ini, mengabaikan semua cache yang ada.
+    Angka versinya bisa apa saja (misal: ?v=2, ?v=timestamp, dll).
+  -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js?v=1.1"></script>
 </body>
 </html>
