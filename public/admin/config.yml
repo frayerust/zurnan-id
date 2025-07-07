@@ -1,22 +1,27 @@
 # Konfigurasi untuk backend (menghubungkan ke GitHub)
 backend:
   name: github
-  repo: frayerust/zurnan-id # GANTI DENGAN username/nama-repo ANDA
+  repo: frayerust/zurnan-id # Pastikan ini username/nama-repo Anda
   branch: main # Branch utama Anda
+  
+  # PERUBAHAN KUNCI: Tambahkan baris ini!
+  # Ini memberitahu CMS untuk menggunakan alur otentikasi pop-up GitHub
+  # secara langsung, tanpa melalui server Netlify.
+  auth_type: implicit
 
 # Konfigurasi untuk media (jika Anda ingin mengunggah gambar dari CMS)
-media_folder: "src/assets/images/uploads" # Lokasi penyimpanan gambar
-public_folder: "/assets/images/uploads" # Path publik untuk gambar
+media_folder: "src/assets/images/uploads"
+public_folder: "/assets/images/uploads"
 
 # Definisikan koleksi konten yang bisa dikelola
 collections:
   # Koleksi untuk Opini/Blog
-  - name: "opini" # Nama folder di src/content
-    label: "Opini (Blog)" # Label yang muncul di antarmuka CMS
-    folder: "src/content/opini" # Folder tempat menyimpan file
-    create: true # Izinkan membuat file baru
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Format nama file
-    fields: # Daftar isian formulir di CMS
+  - name: "opini"
+    label: "Opini (Blog)"
+    folder: "src/content/opini"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
       - { label: "Judul", name: "title", widget: "string" }
       - { label: "Tanggal Publikasi", name: "pubDate", widget: "datetime" }
       - { label: "Deskripsi Singkat", name: "description", widget: "string" }
