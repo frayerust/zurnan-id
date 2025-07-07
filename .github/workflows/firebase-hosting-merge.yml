@@ -10,19 +10,21 @@ jobs:
       # Langkah 1: Mengunduh kode dari repositori Anda
       - uses: actions/checkout@v4
 
-      # Langkah 2 (BARU): Menginstal Node.js dan dependensi
+      # Langkah 2: Menginstal Node.js dan dependensi
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Menggunakan versi Node.js yang stabil
+          node-version: '20'
           cache: 'npm'
       
       - name: Install Dependencies
         run: npm install
 
-      # Langkah 3 (BARU): Membangun situs Astro
+      # Langkah 3: Membangun situs Astro
       - name: Build Project
-        run: npm run build # Ini akan membuat folder 'dist'
+        # PERUBAHAN KUNCI: Gunakan 'npx astro build' untuk memastikan
+        # perintah 'astro' ditemukan dan dieksekusi dengan benar.
+        run: npx astro build
 
       # Langkah 4: Melakukan deploy ke Firebase
       - name: Deploy to Firebase
