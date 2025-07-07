@@ -7,8 +7,26 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
+      # Langkah 1: Mengunduh kode dari repositori Anda
       - uses: actions/checkout@v4
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+
+      # Langkah 2 (BARU): Menginstal Node.js dan dependensi
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Menggunakan versi Node.js yang stabil
+          cache: 'npm'
+      
+      - name: Install Dependencies
+        run: npm install
+
+      # Langkah 3 (BARU): Membangun situs Astro
+      - name: Build Project
+        run: npm run build # Ini akan membuat folder 'dist'
+
+      # Langkah 4: Melakukan deploy ke Firebase
+      - name: Deploy to Firebase
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ZURNAN_ID }}'

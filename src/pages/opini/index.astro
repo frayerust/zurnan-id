@@ -1,67 +1,47 @@
 ---
+// File: src/pages/opini/index.astro
+
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
-// Ambil semua entri dari koleksi 'opini'
-const semuaOpini = await getCollection('opini', ({ data }) => {
-  // Filter draf jika ada
-  return import.meta.env.PROD ? data.draft !== true : true;
-});
+// Mengambil semua entri dari koleksi 'opini'
+// Pastikan Anda sudah memiliki folder `src/content/opini` dengan file .md di dalamnya
+const semuaOpini = await getCollection('opini').catch(() => []);
 
-// Urutkan dari yang terbaru
+// Mengurutkan postingan dari yang terbaru ke yang terlama
 semuaOpini.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
+
 <Layout>
-  <section>
-    <h2 class="text-3xl font-bold mb-6">Semua Opini</h2>
+  <section id="opini-content" class="content-section active">
+    <h2 class="text-3xl font-bold mb-6">Opini (Blog)</h2>
     <div class="space-y-6">
-      {semuaOpini.map(opini => (
-        <a href={`/opini/${opini.slug}/`} class="block p-6 bg-white rounded-lg border border-stone-200 hover:shadow-md transition">
-          <h3 class="font-bold text-xl text-teal-800">{opini.data.title}</h3>
-          <p class="text-sm text-stone-500 my-1">
-            {opini.data.pubDate.toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}
-          </p>
-          <p class="text-stone-600 mt-2">{opini.data.description}</p>
-        </a>
-      ))}
+      {semuaOpini.length > 0 ? (
+        semuaOpini.map(opini => (
+          <a href={`/opini/${opini.slug}/`} class="block p-6 bg-white rounded-lg border border-stone-200 hover:shadow-lg transition duration-300">
+            <article>
+              <h3 class="font-bold text-xl text-teal-800 hover:text-teal-600">
+                {opini.data.title}
+              </h3>
+              <p class="text-sm text-stone-500 my-1">
+                {/* BENAR: Pemformatan tanggal dilakukan langsung sebagai ekspresi */}
+                {opini.data.pubDate.toLocaleDateString('id-ID', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </p>
+              <p class="text-stone-600 mt-2">
+                {opini.data.description}
+              </p>
+            </article>
+          </a>
+        ))
+      ) : (
+        <div class="bg-white p-6 rounded-lg border border-stone-200">
+          <p class="text-stone-600">Belum ada opini yang dipublikasikan. Silakan cek kembali nanti.</p>
+        </div>
+      )}
     </div>
   </section>
-</Layout>
-
-Fase 3: Membuat Halaman Detail untuk Setiap Opini
-Kita perlu satu template lagi yang akan digunakan untuk menampilkan isi dari setiap opini saat diklik.
-
-1. Buat Halaman Dinamis
-
-Di dalam src/pages/opini, buat file baru bernama [slug].astro. Nama dengan kurung siku [] ini adalah cara Astro membuat halaman dinamis.
-
-File: src/pages/opini/[slug].astro
-
----
-import Layout from '../../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
-
-// Fungsi ini memberi tahu Astro halaman mana saja yang harus dibuat saat build
-export async function getStaticPaths() {
-  const semuaOpini = await getCollection('opini');
-  return semuaOpini.map(opini => ({
-    params: { slug: opini.slug },
-    props: { opini },
-  }));
-}
-
-const { opini } = Astro.props;
-const { Content } = await opini.render();
----
-<Layout>
-  <article class="prose max-w-none">
-    <h1 class="text-4xl font-bold text-teal-800">{opini.data.title}</h1>
-    <p class="text-stone-500">
-      Oleh {opini.data.author} pada {opini.data.pubDate.toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}
-    </p>
-    <hr class="my-6">
-    
-    <!-- Di sinilah isi Markdown Anda akan dirender menjadi HTML -->
-    <Content />
-  </article>
 </Layout>
