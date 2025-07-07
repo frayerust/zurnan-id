@@ -1,0 +1,73 @@
+---
+// File: src/layouts/Layout.astro
+
+// ==================================================================
+// BAGIAN SERVER-SIDE (DI DALAM ---)
+// ==================================================================
+
+// 1. Impor CSS di sini. Ini adalah cara yang BENAR untuk CSS.
+import '../styles/style.css';
+
+// 2. Pastikan TIDAK ADA impor JavaScript di sini.
+// import '../scripts/main.js'; <-- HAPUS BARIS SEPERTI INI
+// ==================================================================
+---
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akademik Zurnan ID</title>
+    
+    <!-- Memuat Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Link ke CSS kustom sudah tidak diperlukan di sini karena sudah diimpor di atas -->
+</head>
+<body class="text-stone-800">
+
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <!-- Sidebar Navigation -->
+        <aside class="w-full md:w-64 bg-white border-r border-stone-200 p-4 md:p-6 flex-shrink-0">
+            <h1 class="text-2xl font-bold text-teal-700 mb-2">Zurnan Alfian</h1>
+            <p class="text-sm text-stone-500 mb-8">Dosen Pengguna AI</p>
+
+            <nav id="main-nav" class="space-y-2">
+                <a href="#beranda" class="nav-item flex items-center p-3 rounded-lg text-stone-700 font-semibold active">
+                    <span class="mr-3">🏠</span> Beranda
+                </a>
+                <a href="#akademik" class="nav-item flex items-center p-3 rounded-lg text-stone-700 font-semibold">
+                    <span class="mr-3">🎓</span> Akademik
+                </a>
+                <a href="#jadwal" class="nav-item flex items-center p-3 rounded-lg text-stone-700 font-semibold">
+                    <span class="mr-3">🗓️</span> Jadwal & Konsultasi
+                </a>
+                <a href="#opini" class="nav-item flex items-center p-3 rounded-lg text-stone-700 font-semibold">
+                    <span class="mr-3">✍️</span> Opini (Blog)
+                </a>
+                <a href="#misi" class="nav-item flex items-center p-3 rounded-lg text-stone-700 font-semibold">
+                    <span class="mr-3">🎯</span> Misi Mahasiswa
+                </a>
+                <a href="#galeri" class="nav-item flex items-center p-3 rounded-lg text-stone-700 font-semibold">
+                    <span class="mr-3">🖼️</span> Galeri Kegiatan
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6 md:p-10 bg-stone-50">
+            <slot />
+        </main>
+    </div>
+
+    <!-- ================================================================== -->
+    <!-- BAGIAN CLIENT-SIDE (DI DALAM BODY) -->
+    <!-- ================================================================== -->
+    
+    <!-- 3. Tautkan JavaScript di sini. Ini adalah cara yang BENAR untuk JavaScript. -->
+    <!-- Astro akan memproses path ini dengan benar. -->
+    <script src="../scripts/main.js"></script>
+</body>
+</html>

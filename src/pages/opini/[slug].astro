@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+// Fungsi ini memberi tahu Astro halaman mana saja yang harus dibuat saat build
+export async function getStaticPaths() {
+  const semuaOpini = await getCollection('opini');
+  return semuaOpini.map(opini => ({
+    params: { slug: opini.slug },
+    props: { opini },
+  }));
+}
+
+const { opini } = Astro.props;
+const { Content } = await opini.render();
+---
+<Layout>
+  <article class="prose max-w-none">
+    <h1 class="text-4xl font-bold text-teal-800">{opini.data.title}</h1>
+    <p class="text-stone-500">
+      Oleh {opini.data.author} pada {opini.data.pubDate.toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}
+    </p>
+    <hr class="my-6">
+    
+    <!-- Di sinilah isi Markdown Anda akan dirender menjadi HTML -->
+    <Content />
+  </article>
+</Layout>
