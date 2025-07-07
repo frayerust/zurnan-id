@@ -1,3 +1,5 @@
+/* File: src/styles/style.css */
+
 /*
 ================================================
  File CSS Global
@@ -69,6 +71,18 @@ body {
     padding: 0 1rem;
 }
 
-.collapsible-content.open {
-    padding: 1rem;
+/* Styling untuk collapsible/accordion di bagian Akademik */
+.collapsible-trigger {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
+
+.collapsible-content {
+    /* Keadaan tertutup: tinggi maksimal 0 dan konten disembunyikan */
+    max-height: 0;
+    overflow: hidden;
+    /* Efek transisi untuk max-height agar animasi mulus */
+    transition: max-height 0.5s ease-in-out;
+}
+
+/* Tidak perlu kelas .open lagi, karena tinggi diatur langsung oleh JS */
