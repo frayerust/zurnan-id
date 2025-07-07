@@ -1,0 +1,36 @@
+# Konfigurasi untuk backend (menghubungkan ke GitHub)
+backend:
+  name: github
+  repo: frayerust/zurnan-id # GANTI DENGAN username/nama-repo ANDA
+  branch: main # Branch utama Anda
+
+# Konfigurasi untuk media (jika Anda ingin mengunggah gambar dari CMS)
+media_folder: "src/assets/images/uploads" # Lokasi penyimpanan gambar
+public_folder: "/assets/images/uploads" # Path publik untuk gambar
+
+# Definisikan koleksi konten yang bisa dikelola
+collections:
+  # Koleksi untuk Opini/Blog
+  - name: "opini" # Nama folder di src/content
+    label: "Opini (Blog)" # Label yang muncul di antarmuka CMS
+    folder: "src/content/opini" # Folder tempat menyimpan file
+    create: true # Izinkan membuat file baru
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Format nama file
+    fields: # Daftar isian formulir di CMS
+      - { label: "Judul", name: "title", widget: "string" }
+      - { label: "Tanggal Publikasi", name: "pubDate", widget: "datetime" }
+      - { label: "Deskripsi Singkat", name: "description", widget: "string" }
+      - { label: "Penulis", name: "author", widget: "string", default: "Zurnan" }
+      - { label: "Isi Tulisan", name: "body", widget: "markdown" }
+
+  # Koleksi untuk Misi Mahasiswa
+  - name: "misi"
+    label: "Misi Mahasiswa"
+    folder: "src/content/misi"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Judul Misi", name: "title", widget: "string" }
+      - { label: "Mata Kuliah Terkait", name: "course", widget: "string" }
+      - { label: "Tanggal Deadline", name: "deadline", widget: "datetime" }
+      - { label: "Deskripsi Lengkap Misi", name: "body", widget: "markdown" }
