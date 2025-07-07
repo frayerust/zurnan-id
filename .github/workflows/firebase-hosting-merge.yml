@@ -20,13 +20,15 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      # Langkah 3: Membangun situs Astro
+      # Langkah 3 (BARU & KRUSIAL): Memberikan Izin Eksekusi
+      - name: Add Execute Permission to Astro CLI
+        run: chmod +x node_modules/.bin/astro
+
+      # Langkah 4: Membangun situs Astro
       - name: Build Project
-        # PERUBAHAN KUNCI: Gunakan 'npx astro build' untuk memastikan
-        # perintah 'astro' ditemukan dan dieksekusi dengan benar.
         run: npx astro build
 
-      # Langkah 4: Melakukan deploy ke Firebase
+      # Langkah 5: Melakukan deploy ke Firebase
       - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
